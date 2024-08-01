@@ -1,0 +1,18 @@
+<div class="modal-header">
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-12 text-center">
+      <i class="bi bi-check-circle-fill icon"></i>
+    </div>
+  </div>
+  <div class="col-12 text-center">
+    <h2 [hidden]="mode === 'edit'">ลงทะเบียนสำเร็จ</h2>
+    <h2 [hidden]="mode === 'add'">แก้ไขข้อมูลสำเร็จ</h2>
+    <label >จะสามารถใช้งานทะเบียนรถได้</label>
+    <label>หลังจากได้รับการอนุมัติจากนิติบุคคล</label>
+  </div>
+
+<div class="text-center py-3">
+  <button type="button" class="btn btn-cancel mx-2 px-5" (click)="activeModal.close('Close click')">ปิด</button>
+</div>

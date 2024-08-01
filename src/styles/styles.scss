@@ -1,0 +1,103 @@
+@import '_variables';
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: white;
+  }
+}
+
+.modal-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  min-height: calc(100vh - 60px);
+}
+
+@media (max-width: 767px) {
+  .modal-dialog {
+    min-height: calc(100vh - 20px);
+  }
+}
+
+body {
+  font-family: 'Kanit';
+  font-weight: 500;
+}
+
+body, html {
+  height: 100%;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: $gray30;
+}
+
+.btn-register{
+  background-color: $orange70;
+  border: 2px solid $orange70;
+  color: white;
+}
+.btn-cancel{
+  background-color: white;
+  border: 2px solid $orange70;
+  color: $orange70;
+}
+
+.invalid-button{
+  background-color: $gray70 !important;
+  border: 2px solid $gray70;
+  color: white;
+}
+
+.title{
+  color: $orange70;
+  font-weight: bold;
+}
+
+
+.text-orange{
+  color: $orange70;
+}
+
+.modal-header{
+  border-bottom: none;
+}
+
+.modal-body{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+input{
+  background-color: $orange40;
+  border-color: $orange70;
+  color: $orange70;
+
+}
+input[type="text"]:focus {
+  border: 2px solid  $orange70 !important;
+  background-color: $orange40;
+  color: $orange70;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+select{
+  background-color: $orange40;
+  border: 2px solid  $orange70 !important;
+  color: $orange70;
+}
+select:focus {
+  border: 2px solid  $orange70 !important;
+  background-color: $orange40;
+  color: $orange70;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.required:after {
+  content:"\00a0*";
+  color:red;
+}

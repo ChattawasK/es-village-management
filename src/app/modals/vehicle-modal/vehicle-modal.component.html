@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h4 class="modal-title text-orange">เพิ่มข้อมูลทะเบียนรถ</h4>
+</div>
+<div class="modal-body">
+  <div class="form-group mb-3">
+    <label class="form-label required">เลขทะเบียน</label>
+    <input type="text" class="form-control" >
+  </div>
+  <div class="mb-3">
+    <label for="village" class="form-label required">จังหวัด</label>
+    <select class="form-select" id="village">
+      <option value="">เลือกจังหวัด</option>
+    </select>
+</div>
+<div class="text-center py-3">
+  <button type="button" class="btn invalid-button mx-2 px-3" (click)="activeModal.close(mode)">ยกเลิก</button>
+  <button type="button" class="btn btn-cancel mx-2 px-3" (click)="activeModal.close(mode)">บันทึก</button>
+</div>

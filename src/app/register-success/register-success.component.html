@@ -1,0 +1,48 @@
+<div class="login-container">
+  <div class="login-box">
+      <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 text-center">
+                <i class="bi bi-check-circle-fill icon"></i>
+              </div>
+            </div>
+            <div class="row" *ngIf="!isSaved">
+              <div class="col-12 text-center">
+                <h2 class="title">ยืนยันตัวตนสำเร็จ</h2>
+                <h1>คุณวีรพล เวชวิชา</h1>
+              </div>
+              <div class="col-12 pt-2">
+                <div class="mb-3">
+                  <label for="village" class="form-label">เลือกหมู่บ้านสำหรับการลงทะเบียน</label>
+                  <select class="form-select" id="village">
+                    <option selected>หมู่บ้านกลางเมืองวัชรพล</option>
+                    <option>หมู่บ้านกลางเมืองวัชรพล 1</option>
+                    <option>หมู่บ้านกลางเมืองวัชรพล 2</option>
+                    <option>หมู่บ้านกลางเมืองวัชรพล 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="d-grid pt-3">
+                <button type="button" class="btn btn-register" (click)="save()">บันทึก</button>
+              </div>
+            </div>
+            <div class="row" *ngIf="isSaved">
+              <div class="col-12 text-center">
+                <h2 class="title">ลงทะเบียนสำเร็จ</h2>
+                <h1>ยินดีต้อนรับ คุณวีรพล เวชวิชา</h1>
+                <h2 class="title">ใช้งานระบบ</h2>
+                <h2 class="detail">ES Village Management</h2>
+                <h2 >หมู่บ้านกลางเมืองวัชรพล</h2>
+              </div>
+              <div class="d-grid pt-3">
+                <div class="d-grid pt-1">
+                  <button type="submit" class="btn btn-cancel">ปิด</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+  </div>
+</div>

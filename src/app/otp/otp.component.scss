@@ -1,0 +1,40 @@
+@import '_variables';
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+}
+.card {
+  width: 100%;
+  border: none;
+}
+
+.o-c {
+  text-align: center;
+}
+
+::ng-deep .otp-input{
+  background-color: $orange40;
+  border: 1px solid $orange40 !important;
+  color: $orange70;
+}
+
+::ng-deep .otp-input:focus-visible{
+    background-color: $orange40;
+    outline: 2px solid $orange70;
+}
+
+.try-again{
+  color: $orange70;
+}

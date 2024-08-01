@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row px-4">
+    <div class="col-12 pt-5 text-center">
+      <h1 class="title">Profile</h1>
+    </div>
+    <div class="col-12 pt-4 pb-2">
+      <h1>คุณวีรพล เวชวิชา</h1>
+      <h5 class="text-orange">หมู่บ้านกลางเมืองวัชรพล</h5>
+    </div>
+    <div class="col-5">
+      <label>บ้านเลขที่</label>
+    </div>
+    <div class="col-7">
+      <label class="text-orange">166/132</label>
+    </div>
+    <div class="col-5">
+      <label>เบอร์โทรศัพท์</label>
+    </div>
+    <div class="col-7">
+      <label class="text-orange">098-711-5326</label>
+    </div>
+    <div class="col-12 pt-4 pb-2">
+      <hr/>
+    </div>
+    <div class="col-12">
+      <h5 class="text-orange">ข้อมูลผู้มาติดต่อ</h5>
+    </div>
+    <form class="row row-cols-sm-auto">
+      <div class="col-12">
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="model"
+            ngbDatepicker
+            #d="ngbDatepicker"
+          />
+          <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

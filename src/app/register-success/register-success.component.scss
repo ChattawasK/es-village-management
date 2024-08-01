@@ -1,0 +1,42 @@
+@import '_variables';
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+}
+
+.card {
+  width: 100%;
+  border: none;
+}
+
+.icon{
+  font-size: 120px;
+  color: $orange70;
+}
+
+.title{
+  color: $gray80;
+}
+.detail{
+  color: $orange70;
+}
+
+
+
+.btn-register{
+  background-color: $orange70;
+  border: 2px solid $orange70;
+  color: white;
+}
