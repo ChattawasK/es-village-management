@@ -1,36 +1,41 @@
 <div class="container">
   <div class="row px-4">
     <div class="col-12 pt-5 text-center">
-      <h1 class="title">Visitor Pre-Register</h1>
+      <h1 class="title">Walk-in Register</h1>
     </div>
-    <div class="col-12 pt-4 pb-2">
-      <h1>คุณวีรพล เวชวิชา</h1>
-      <h5 class="text-orange">หมู่บ้านกลางเมืองวัชรพล</h5>
-    </div>
-    <div class="col-5">
-      <label>บ้านเลขที่</label>
-    </div>
-    <div class="col-7">
-      <label class="text-orange">166/132</label>
-    </div>
-    <div class="col-5">
-      <label>เบอร์โทรศัพท์</label>
-    </div>
-    <div class="col-7">
-      <label class="text-orange">098-711-5326</label>
+    <div class="col-12 pt-2 text-center">
+      <h1>กน789</h1>
     </div>
     <div class="col-12 pt-4 pb-2">
       <hr/>
     </div>
-    <div class="col-12 mb-3">
-      <h5 class="text-orange">ข้อมูลผู้มาติดต่อ</h5>
-    </div>
-
     <form class="row row-cols-sm-auto">
+      <div class="col-12 mb-3">
+        <h5 class="text-orange">ข้อมูลบ้านที่ต้องการติดต่อ</h5>
+      </div>
+      <div class="form-group">
+        <label class="form-label required">บ้านเลขที่</label>
+        <select class="form-select" id="village">
+          <option value="">163/197</option>
+        </select>
+      </div>
+      <div class="col-12 pt-2 pb-2">
+        <hr/>
+      </div>
+      <div class="col-12 mb-3">
+        <h5 class="text-orange">ข้อมูลผู้มาติดต่อ</h5>
+      </div>
+      <div class="col-12">
+        <label class="form-label mb-2">รูปถ่าย</label>
+        <img *ngIf="url"  class="img-thumbnail" src={{url}}>
+        <div class="mb-3">
+          <input class="form-control" type="file" id="formFile"  (change)="onFileChanged($event)" >
+        </div>
+      </div>
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label required">วันที่มาติดต่อ</label>
-          <div class="input-group">
+          <div class="input-group mb-1">
             <input
               class="form-control"
               placeholder="yyyy-mm-dd"
@@ -41,15 +46,6 @@
             />
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
           </div>
-        </div>
-        <div class="form-group mb-1">
-          <label class="form-label required">ทะเบียนรถ</label>
-          <input type="text" class="form-control" >
-        </div>
-        <div class="form-group mb-3">
-          <select class="form-select" id="village">
-            <option value="">เลือกจังหวัด</option>
-          </select>
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">ชื่อผู้มาติดต่อ</label>

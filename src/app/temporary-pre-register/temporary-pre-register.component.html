@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row px-4">
     <div class="col-12 pt-5 text-center">
-      <h1 class="title">Visitor Pre-Register</h1>
+      <h1 class="title">Temporary Pre-Register</h1>
     </div>
     <div class="col-12 pt-4 pb-2">
       <h1>คุณวีรพล เวชวิชา</h1>
@@ -30,7 +30,7 @@
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label required">วันที่มาติดต่อ</label>
-          <div class="input-group">
+          <div class="input-group mb-1">
             <input
               class="form-control"
               placeholder="yyyy-mm-dd"
@@ -40,6 +40,17 @@
               #d="ngbDatepicker"
             />
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+          </div>
+          <div class="input-group">
+            <input
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              name="dp2"
+              [(ngModel)]="model"
+              ngbDatepicker
+              #d2="ngbDatepicker"
+            />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"></button>
           </div>
         </div>
         <div class="form-group mb-1">

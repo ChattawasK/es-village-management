@@ -71,11 +71,12 @@ body, html {
 }
 
 input{
-  background-color: $orange40;
-  border-color: $orange70;
-  color: $orange70;
+  background-color: $orange40 !important;
+  border-color: $orange70 !important;
+  color: $orange70 !important;
 
 }
+
 input[type="text"]:focus {
   border: 2px solid  $orange70 !important;
   background-color: $orange40;
@@ -84,10 +85,25 @@ input[type="text"]:focus {
   outline: 0 none;
 }
 
-select{
-  background-color: $orange40;
+textarea {
+  background-color: $orange40 !important;
+  border-color: $orange70 !important;
+  color: $orange70 !important;
+
+}
+
+textarea:focus {
   border: 2px solid  $orange70 !important;
+  background-color: $orange40;
   color: $orange70;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+select{
+  background-color: $orange40 !important;
+  border: 1px solid   $orange70 !important;
+  color: $orange70 !important;
 }
 select:focus {
   border: 2px solid  $orange70 !important;
@@ -100,4 +116,8 @@ select:focus {
 .required:after {
   content:"\00a0*";
   color:red;
+}
+
+input:disabled {
+  background: $gray50 !important;
 }

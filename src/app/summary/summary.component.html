@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row px-4">
+    <div class="col-12 pt-5 text-center">
+      <h1 class="title">ข้อมูลผู้มาติดต่อ</h1>
+    </div>
+    <div class="col-12 pt-2 text-center">
+      <h1>กน789</h1>
+    </div>
+    <div class="col-12 pt-2 text-center">
+      <label>
+        ค่าปรับ
+        <span class="fine">80</span>
+        บาท
+      </label>
+    </div>
+    <div *ngIf="!isShowQr">
+      <div class="col-12 pt-4 pb-2">
+        <hr/>
+      </div>
+      <form class="row row-cols-sm-auto">
+        <div class="col-12 mb-3">
+          <h5 class="text-orange">ข้อมูลบ้านที่ต้องการติดต่อ</h5>
+        </div>
+        <div class="form-group">
+          <label class="form-label required">บ้านเลขที่</label>
+          <select class="form-select" id="village" disabled>
+            <option value="" selected>163/197</option>
+          </select>
+        </div>
+        <div class="col-12 pt-2 pb-2">
+          <hr/>
+        </div>
+        <div class="col-12 mb-3">
+          <h5 class="text-orange">ข้อมูลผู้มาติดต่อ</h5>
+        </div>
+        <div class="col-12">
+          <div class="form-group mb-1">
+            <label class="form-label required">ชื่อผู้มาติดต่อ</label>
+            <input type="text" class="form-control" value="อนัญญา นิรัตน์พัฒนสัย" disabled>
+          </div>
+          <div class="form-group mb-1">
+            <label class="form-label required">เบอร์โทรศัพท์</label>
+            <input type="text" class="form-control" value="067-498-3254" disabled>
+          </div>
+        </div>
+        <div class="col-12 pt-2 pb-2">
+          <hr/>
+        </div>
+        <div class="col-12 mb-3">
+          <h5 class="text-orange">ข้อมูลเข้าพื้นที่</h5>
+        </div>
+        <div class="col-12">
+          <div class="form-group mb-1">
+            <label class="form-label required">ประเภทผู้ติดต่อ</label>
+            <input type="text" class="form-control" value="Visitor Pre-Register" disabled>
+          </div>
+          <div class="form-group mb-1">
+            <label class="form-label required">วันที่เข้า</label>
+            <input type="text" class="form-control" value="18 สิงหาคม 2567" disabled>
+          </div>
+          <div class="form-group mb-1">
+            <label class="form-label required">เวลาเข้า</label>
+            <input type="text" class="form-control" value="08.36 น." disabled>
+          </div>
+          <div class="form-group mb-1">
+            <label class="form-label required">วันที่ออก</label>
+            <input type="text" class="form-control" value="18 สิงหาคม 2567" disabled>
+          </div>
+          <div class="form-group mb-1">
+            <label class="form-label required">เวลาออก</label>
+            <input type="text" class="form-control" value="15.57 น." disabled>
+          </div>
+          <div class="form-group mb-1">
+            <label class="form-label required">เวลาที่เกิน</label>
+            <input type="text" class="form-control" value="3 ชั่วโมง 11 นาที" disabled>
+          </div>
+          <div class="text-center py-3">
+            <button type="button" class="btn invalid-button mx-2 px-3" >ยกเลิก</button>
+            <button type="button" class="btn btn-cancel mx-2 px-3" (click)="isShowQr = true">ชำระค่าปรับ</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 pt-2 text-center" *ngIf="isShowQr">
+      <img  class="img-thumbnail" src="assets/images/qr.png">
+    </div>
+  </div>
+</div>
