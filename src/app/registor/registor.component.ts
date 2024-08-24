@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import Swal from 'sweetalert2'
 import liff from '@line/liff';
+import { AuthenticateService } from '../../services/authenticate.service';
+import { environment } from './../../environments/environment';
+import { LocalService } from '../../services/local.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registor',
@@ -23,14 +27,17 @@ export class RegistorComponent implements OnInit {
   statusMessage : string | undefined = '';
   userId : string | null = '';
 
-  constructor() { }
+  constructor(private  authenticateService: AuthenticateService,
+    private localService: LocalService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.initLine();
   }
 
   initLine(): void {
-    liff.init({ liffId: '2005807746-xE4mZyWk' }, () => {
+    liff.init({ liffId: environment.line_apiKey }, () => {
       if (liff.isLoggedIn()) {
         this.runApp();
       } else {
@@ -43,11 +50,12 @@ export class RegistorComponent implements OnInit {
     const idToken = liff.getIDToken();
     this.idToken = idToken;
     liff.getProfile().then(profile => {
-      console.log(profile);
-      this.displayName = profile.displayName;
-      this.pictureUrl = profile.pictureUrl;
-      this.statusMessage = profile.statusMessage;
+      this.localService.saveData("lineUserId",profile.userId)
+      this.localService.saveData("idToken",idToken)
       this.userId = profile.userId;
+      this.authenticateService.verifyLiffToken(this.idToken).subscribe((data: any[]) => {
+        console.log(data);
+      });
     }).catch(err => console.error(err));
   }
 
@@ -55,9 +63,15 @@ export class RegistorComponent implements OnInit {
     liff.logout();
     window.location.reload();
   }
-  onSubmit(f: NgForm) {
-    console.log(f.value); // { first: '', last: '' }
-    console.log(f.valid); // false
+
+  onSubmit() {
+    this.authenticateService.requestOtp(this.form.controls.phoneNumber.value).subscribe((data: any) => {
+      if(data.isSuccess == true){
+        this.localService.saveData("phoneNumber",this.form.controls.phoneNumber.value)
+        this.localService.saveData("otpToken",data.data.otpToken);
+        this.router.navigate(['otp']);
+      }
+    });
   }
 
 }

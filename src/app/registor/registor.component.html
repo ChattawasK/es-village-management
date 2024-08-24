@@ -2,7 +2,7 @@
   <div class="login-box">
       <div class="card">
           <div class="card-body">
-              <form [formGroup]="form">
+              <form [formGroup]="form" (submit)="onSubmit()">
                   <div class="mb-3">
                       <input type="text" [OnlyNumber]="true" maxlength="10" formControlName="phoneNumber" class="form-control" id="phoneNumber" placeholder="กรอกเบอร์โทรศัพท์">
                   </div>

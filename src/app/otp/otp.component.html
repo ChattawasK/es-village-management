@@ -20,7 +20,7 @@
                 <p class="try-again" *ngIf="timeLeft == 0">ส่งอีกครั้ง</p>
               </div>
               <div class="d-grid pt-3">
-                <button type="submit" class="btn btn-register" [disabled]="otp?.length != 6" [ngClass]="{'invalid-button': otp?.length != 6}">ยืนยัน otp</button>
+                <button type="button" (click)="validateOtp()" class="btn btn-register" [disabled]="otp?.length != 6" [ngClass]="{'invalid-button': otp?.length != 6}">ยืนยัน otp</button>
               </div>
             </div>
 

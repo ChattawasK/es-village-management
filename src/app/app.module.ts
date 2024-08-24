@@ -18,6 +18,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { ApproveRequestVehicleComponent } from './approve-request-vehicle/approve-request-vehicle.component';
 import { RejectRequestVehicleComponent } from './modals/reject-request-vehicle/reject-request-vehicle.component';
 import { ApproveTemporaryPreRegisterComponent } from './approve-temporary-pre-register/approve-temporary-pre-register.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,23 +26,24 @@ import { ApproveTemporaryPreRegisterComponent } from './approve-temporary-pre-re
     RegistorComponent,
     OnlyNumber,
     OtpComponent,
-      RegisterSuccessComponent,
-      ProfileComponent,
-      VisitorPreRegisterComponent,
-      TemporaryPreRegisterComponent,
-      WalkInRegisterComponent,
-      SummaryComponent,
-      ApproveRequestVehicleComponent,
-      RejectRequestVehicleComponent,
-      ApproveTemporaryPreRegisterComponent
-   ],
+    RegisterSuccessComponent,
+    ProfileComponent,
+    VisitorPreRegisterComponent,
+    TemporaryPreRegisterComponent,
+    WalkInRegisterComponent,
+    SummaryComponent,
+    ApproveRequestVehicleComponent,
+    RejectRequestVehicleComponent,
+    ApproveTemporaryPreRegisterComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

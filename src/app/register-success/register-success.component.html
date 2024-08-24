@@ -15,11 +15,11 @@
               <div class="col-12 pt-2">
                 <div class="mb-3">
                   <label for="village" class="form-label">เลือกหมู่บ้านสำหรับการลงทะเบียน</label>
-                  <select class="form-select" id="village">
-                    <option selected>หมู่บ้านกลางเมืองวัชรพล</option>
-                    <option>หมู่บ้านกลางเมืองวัชรพล 1</option>
-                    <option>หมู่บ้านกลางเมืองวัชรพล 2</option>
-                    <option>หมู่บ้านกลางเมืองวัชรพล 3</option>
+                  <select class="form-select" id="village" [(ngModel)]="selectedVillage">
+                    <option selected> กรุณาเลือก </option>
+                    <ng-container *ngFor="let item of villages">
+                      <option [value]="item.villageShortName"> {{item.villageName}} </option>
+                    </ng-container>
                   </select>
                 </div>
               </div>

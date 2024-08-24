@@ -1,4 +1,7 @@
+import { LocalService } from './../../services/local.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AuthenticateService } from '../../services/authenticate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otp',
@@ -24,7 +27,10 @@ export class OtpComponent implements OnInit {
 
   @ViewChild('ngOtpInput', { static: false}) ngOtpInput: any;
 
-  constructor() { }
+  constructor(private authenticateService:AuthenticateService,
+    private localService: LocalService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.startCountdown();
@@ -77,6 +83,18 @@ export class OtpComponent implements OnInit {
     setTimeout(() => {
       this.showOtpComponent = true;
     }, 0);
+  }
+
+  validateOtp(){
+    this.authenticateService.verifyOtp(
+      this.localService.getData("phoneNumber"),
+      this.localService.getData("otpToken"),
+      this.otp).subscribe((data: any) => {
+        if(data.isSuccess){
+          this.router.navigate(['register-success']);
+          this.localService.saveData("authToken",data.data.authToken);
+        }
+      });
   }
 
 }
