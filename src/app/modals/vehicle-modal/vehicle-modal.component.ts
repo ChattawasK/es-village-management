@@ -1,3 +1,4 @@
+import { ProvinceService } from './../../../services/province.service';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -7,13 +8,23 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./vehicle-modal.component.scss']
 })
 export class VehicleModalComponent implements OnInit {
+  provinces : any[] = [];
   activeModal = inject(NgbActiveModal);
 
-	@Input() name: string | undefined;
   @Input() mode: string | undefined;
-  constructor() { }
+
+  name: string | undefined;
+  province: string | undefined;
+  constructor(private provinceService: ProvinceService) { }
 
   ngOnInit() {
+    this.loadProvinces();
+  }
+
+  loadProvinces(){
+    this.provinceService.getProvinces().subscribe((data: any) => {
+      this.provinces = data;
+    })
   }
 
 }

@@ -53,8 +53,11 @@ export class RegistorComponent implements OnInit {
       this.localService.saveData("lineUserId",profile.userId)
       this.localService.saveData("idToken",idToken)
       this.userId = profile.userId;
-      this.authenticateService.verifyLiffToken(this.idToken).subscribe((data: any[]) => {
-        console.log(data);
+      this.authenticateService.verifyLiffToken(this.idToken).subscribe((data: any) => {
+        if(data.data.isRegistered){
+          this.localService.saveData("authToken",data.data.token);
+          this.router.navigate(['profile']);
+        }
       });
     }).catch(err => console.error(err));
   }

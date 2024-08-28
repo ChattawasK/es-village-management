@@ -19,6 +19,7 @@ import { ApproveRequestVehicleComponent } from './approve-request-vehicle/approv
 import { RejectRequestVehicleComponent } from './modals/reject-request-vehicle/reject-request-vehicle.component';
 import { ApproveTemporaryPreRegisterComponent } from './approve-temporary-pre-register/approve-temporary-pre-register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { VehicleModalComponent } from './modals/vehicle-modal/vehicle-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SummaryComponent,
     ApproveRequestVehicleComponent,
     RejectRequestVehicleComponent,
-    ApproveTemporaryPreRegisterComponent
+    ApproveTemporaryPreRegisterComponent,
+    VehicleModalComponent
   ],
   imports: [
     BrowserModule,

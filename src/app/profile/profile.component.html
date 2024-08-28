@@ -4,20 +4,20 @@
       <h1 class="title">Profile</h1>
     </div>
     <div class="col-12 pt-4 pb-2">
-      <h1>คุณวีรพล เวชวิชา</h1>
-      <h5 class="text-orange">หมู่บ้านกลางเมืองวัชรพล</h5>
+      <h1>คุณ{{name}}</h1>
+      <h5 class="text-orange">{{village?.villageName}}</h5>
     </div>
     <div class="col-5">
       <label>บ้านเลขที่</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">166/132</label>
+      <label class="text-orange"></label>
     </div>
     <div class="col-5">
       <label>เบอร์โทรศัพท์</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">098-711-5326</label>
+      <label class="text-orange">{{phoneNumber}}</label>
     </div>
     <div class="col-12 pt-4 pb-2">
       <hr/>
@@ -30,15 +30,9 @@
         <div class="row py-2">
           <div class="col-9">
             <div class="row">
-              <h3>{{item.licensePlate}}</h3>
-              <label>{{item.province}}</label>
-              <label>{{item.isApprove}}</label>
-            </div>
-            <div class="row">
-
-            </div>
-            <div class="row">
-
+              <h3>{{item.plateNo}}</h3>
+              <label>{{item.plateProvince ?? "กรุงเทพ"}}</label>
+              <label>{{item.status == 1 ? "อนุมัติ" : 'ไม่อนุมัติ'}}</label>
             </div>
           </div>
           <div class="col-3">

@@ -10,6 +10,9 @@
     <label for="village" class="form-label required">จังหวัด</label>
     <select class="form-select" id="village">
       <option value="">เลือกจังหวัด</option>
+      <ng-container *ngFor="let item of provinces">
+        <option [value]="item.id">{{item.nameTh}}</option>
+      </ng-container>
     </select>
 </div>
 <div class="text-center py-3">

@@ -27,4 +27,15 @@ export class CustomerService {
       {headers: header}
     );
   }
+
+  profile(){
+    let header = new HttpHeaders().set(
+      "Authorization",
+      "bearer " + this.localService.getData("authToken")!
+    );
+
+    return this.http.get<any>(`${environment.end_point_line_api}Customers/profile`,
+      {headers: header}
+    );
+  }
 }

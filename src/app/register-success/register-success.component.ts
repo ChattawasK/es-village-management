@@ -31,7 +31,6 @@ export class RegisterSuccessComponent implements OnInit {
       this.localService.getData("lineUserId"),
       this.selectedVillage
     ).subscribe((data: any) =>{
-      console.log(data);
       this.isSaved = true;
     });
 
