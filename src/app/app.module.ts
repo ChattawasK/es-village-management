@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistorComponent } from './registor/registor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OnlyNumber } from './directive/only-number.directive';
@@ -20,6 +20,7 @@ import { RejectRequestVehicleComponent } from './modals/reject-request-vehicle/r
 import { ApproveTemporaryPreRegisterComponent } from './approve-temporary-pre-register/approve-temporary-pre-register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { VehicleModalComponent } from './modals/vehicle-modal/vehicle-modal.component';
+import { NgbDateCustomParserFormatter } from './date-formate/date-custom-parser-formatter.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { VehicleModalComponent } from './modals/vehicle-modal/vehicle-modal.comp
     NgOtpInputModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

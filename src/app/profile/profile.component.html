@@ -11,7 +11,7 @@
       <label>บ้านเลขที่</label>
     </div>
     <div class="col-7">
-      <label class="text-orange"></label>
+      <label class="text-orange">{{house?.nameTh}}</label>
     </div>
     <div class="col-5">
       <label>เบอร์โทรศัพท์</label>
@@ -32,17 +32,17 @@
             <div class="row">
               <h3>{{item.plateNo}}</h3>
               <label>{{item.plateProvince ?? "กรุงเทพ"}}</label>
-              <label>{{item.status == 1 ? "อนุมัติ" : 'ไม่อนุมัติ'}}</label>
+              <label>{{item.status == '0' ? "รออนุมัติ" : (item.status == '1' ? 'อนุมัติ' : 'ไม่อนุมัติ')}}</label>
             </div>
           </div>
           <div class="col-3">
             <div class="row">
-              <button type="button" class="btn btn-register btn-block" style="text-align: left !important;" (click)="openVehicelModal('edit')">
+              <button type="button" class="btn btn-register btn-block" style="text-align: left !important;" (click)="openVehicelModal('edit',item)">
                 <i class="bi bi-pencil-square pe-2"  ></i>แก้ไข
               </button>
             </div>
             <div class="row pt-2 ">
-              <button type="button" class="btn btn-cancel btn-block" style="text-align: left !important;" (click)="openDeleteModal()">
+              <button type="button" class="btn btn-cancel btn-block" style="text-align: left !important;" (click)="openDeleteModal(item)">
                 <i class="bi bi-trash"></i>ลบ
               </button>
             </div>
@@ -52,7 +52,7 @@
       </ng-container>
     </div>
     <div class="col-12 py-2 text-center">
-      <i class="bi bi-plus-circle icon" (click)="openVehicelModal('add')"></i>
+      <i class="bi bi-plus-circle icon" (click)="openVehicelModal('add',null)"></i>
     </div>
     <button type="submit" class="btn btn-cancel btn-block mb-5">ยกเลิก</button>
   </div>

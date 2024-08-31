@@ -1,3 +1,4 @@
+import { ResidentService } from './../../services/resident.service';
 import { LocalService } from './../../services/local.service';
 import { VehicleService } from './../../services/vehicle.service';
 import { CustomerService } from './../../services/customer.service';
@@ -18,9 +19,11 @@ export class ProfileComponent implements OnInit {
   village: any;
   phoneNumber = '';
   cars :any[] = [];
+  house: any = null;
   constructor(private customerService:CustomerService,
     private vehicleService: VehicleService,
-    private localService: LocalService
+    private localService: LocalService,
+    private residentService: ResidentService
   ) { }
 
   ngOnInit() {
@@ -33,7 +36,9 @@ export class ProfileComponent implements OnInit {
       this.village = data.data.villages[0];
       this.phoneNumber = data.data.phoneNumber;
       this.localService.saveData("villageShortName",this.village.villageShortName)
+
       this.getVehicle();
+      this.getResident();
     });
   }
 
@@ -42,23 +47,48 @@ export class ProfileComponent implements OnInit {
       this.cars = data;
     });
   }
-  openVehicelModal(mode: any) {
+
+  getResident(){
+    this.residentService.getResident(this.village.villageShortName).subscribe(data => {
+      this.house = data.houses[0];
+    });
+  }
+  openVehicelModal(mode: any,vehicle: any) {
 		const modalRef = this.modalService.open(VehicleModalComponent);
 		modalRef.componentInstance.mode = mode;
+    if(mode == 'edit'){
+      modalRef.componentInstance.plateNo = vehicle.plateNo
+      //modalRef.componentInstance.province = data.plateProvince;
+    }
     modalRef.result.then((data) => {
-      const success = this.modalService.open(AddVehicleSuccessModalComponent);
-      success.componentInstance.mode = mode;
+      if(mode == 'add'){
+        this.vehicleService.createVehicle(data.plateNo,data.provinceId,this.localService.getData("villageShortName")).subscribe(data => {
+          const success = this.modalService.open(AddVehicleSuccessModalComponent);
+          success.componentInstance.mode = mode;
+
+          this.getVehicle();
+        })
+      } else if(mode == 'edit'){
+        this.vehicleService.updateVehicle(vehicle.id,data.plateNo,data.provinceId,this.localService.getData("villageShortName")).subscribe(data => {
+          const success = this.modalService.open(AddVehicleSuccessModalComponent);
+          success.componentInstance.mode = mode;
+          this.getVehicle();
+        })
+      }
     },
     (error) => {
 
     });
 	}
 
-  openDeleteModal() {
+  openDeleteModal(data:any) {
 		const modalRef = this.modalService.open(DeleteVehicleModalComponent);
-
-    modalRef.result.then((data) => {
-
+    modalRef.componentInstance.plateNo = data.plateNo;
+    modalRef.componentInstance.province = data.plateProvince;
+    modalRef.result.then(() => {
+      this.vehicleService.deleteVehicle(data.id,this.localService.getData("villageShortName")).subscribe(data => {
+        this.getVehicle();
+      })
     },
     (error) => {
 

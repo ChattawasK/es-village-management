@@ -9,7 +9,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class DeleteVehicleModalComponent implements OnInit {
 
   activeModal = inject(NgbActiveModal);
-
+  plateNo: string | undefined = "";
+  province: string = "";
   constructor() { }
 
   ngOnInit() {

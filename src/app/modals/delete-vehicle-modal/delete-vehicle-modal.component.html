@@ -9,10 +9,10 @@
   <div class="col-12 text-center">
     <h2>ยืนยันการลบข้อมูล</h2>
     <label>เลขทะเบียน</label>
-    <label>ปล8345 กรุงเทพมหานคร </label>
+    <label class="mx-2">{{plateNo}} {{province}} </label>
   </div>
 
 <div class="text-center py-3">
   <button type="button" class="btn btn-register mx-2 px-5" (click)="activeModal.close('Close click')">ยืนยัน</button>
-  <button type="button" class="btn btn-cancel mx-2 px-5" (click)="activeModal.close('Close click')">ยกเลิก</button>
+  <button type="button" class="btn btn-cancel mx-2 px-5" (click)="activeModal.dismiss()">ยกเลิก</button>
 </div>
