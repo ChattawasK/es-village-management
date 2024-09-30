@@ -3,9 +3,10 @@
 <div class="modal-body">
   <div class="form-group mb-1">
     <label class="form-label required">เหตุผล</label>
-    <textarea class="form-control" rows="5"></textarea>
+    <textarea class="form-control" rows="5" [(ngModel)]="reason"></textarea>
   </div>
 
 <div class="text-center py-3">
-  <button type="button" class="btn btn-cancel mx-2 px-5" (click)="activeModal.close('Close click')">ปิด</button>
+  <button type="button" class="btn btn-register mx-2 px-5" (click)="reject()">บันทึก</button>
+  <button type="button" class="btn btn-cancel mx-2 px-5" (click)="activeModal.dismiss()">ยกเลิก</button>
 </div>

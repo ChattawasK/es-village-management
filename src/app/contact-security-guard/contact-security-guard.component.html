@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row px-4">
+    <div class="col-12 pt-5 text-center">
+      <h1 class="title">Contact Security Guard</h1>
+    </div>
+    <div class="col-12 pt-4 pb-2">
+      <h1>คุณ{{name}}</h1>
+      <h5 class="text-orange">{{village?.villageName}}</h5>
+    </div>
+    <div class="col-5">
+      <label>บ้านเลขที่</label>
+    </div>
+    <div class="col-7">
+      <label class="text-orange">{{house?.nameTh}}</label>
+    </div>
+    <div class="col-5">
+      <label>เบอร์โทรศัพท์</label>
+    </div>
+    <div class="col-7">
+      <label class="text-orange">{{phoneNumber}}</label>
+    </div>
+    <div class="col-12 pt-4 pb-2">
+      <hr/>
+    </div>
+    <form class="row row-cols-sm-auto" [formGroup]="form" (submit)="onSubmit()">
+      <div class="col-12 mb-3">
+        <h5 class="text-orange">แจ้งข้อมูลการติดต่อ</h5>
+      </div>
+      <div class="col-12">
+        <div class="form-group mb-1">
+          <label class="form-label required">รายละเอียดที่ต้องการติดต่อ</label>
+          <textarea class="form-control" rows="6" formControlName="message" [ngClass]="{ 'is-invalid': submitted && f['reason'].errors }"></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label mb-2 required">แนบรูปถ่าย</label>
+          <img *ngIf="url" class="img-thumbnail" src={{url}} >
+          <div class="mb-3 text-center">
+            <input formControlName="imageUpload" class="form-control" type="file" id="formFile"  #fileInput (change)="onFileChanged($event)" accept="image/*" capture="environment" style="display: none;" >
+            <button type="button" class="btn btn-cancel mx-2 px-3" (click)="onClickUpload()" >
+              <i class="bi bi-camera icon" style="font-size: 20px;" ></i>
+            </button><br>
+            <small class="text-danger" *ngIf="submitted && f['imageUpload'].errors">กรุณาเลือกรูปถ่าย</small>
+          </div>
+        </div>
+        <div class="text-center py-3">
+          <button type="button" class="btn invalid-button mx-2 px-3" >ยกเลิก</button>
+          <button type="submit" class="btn btn-cancel mx-2 px-3" >บันทึก</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

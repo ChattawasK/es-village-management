@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,12 +18,30 @@ import { SummaryComponent } from './summary/summary.component';
 import { ApproveRequestVehicleComponent } from './approve-request-vehicle/approve-request-vehicle.component';
 import { RejectRequestVehicleComponent } from './modals/reject-request-vehicle/reject-request-vehicle.component';
 import { ApproveTemporaryPreRegisterComponent } from './approve-temporary-pre-register/approve-temporary-pre-register.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { VehicleModalComponent } from './modals/vehicle-modal/vehicle-modal.component';
 import { NgbDateCustomParserFormatter } from './date-formate/date-custom-parser-formatter.service';
+import { NoEStampComponent } from './no-e-stamp/no-e-stamp.component';
+import { PhoneNumberDirective } from './directive/phone-number.directive';
+
+// Import locale data
+import localeTh from '@angular/common/locales/th';
+import { registerLocaleData } from '@angular/common';
+import { MotocycleWalkInRegisterComponent } from './motocycle-walk-in-register/motocycle-walk-in-register.component';
+import { EStampComponent } from './e-stamp/e-stamp.component';
+import { EStampOutComponent } from './e-stamp-out/e-stamp-out.component';
+import { EStampOutDetailComponent } from './e-stamp-out-detail/e-stamp-out-detail.component';
+import { ContactSecurityGuardComponent } from './contact-security-guard/contact-security-guard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingInterceptor } from './Interceptor/loading-interceptor.service';
+import { LoadingComponent } from './loading/loading.component';
+import { ContactSecurityGuardDetailComponent } from './contact-security-guard-detail/contact-security-guard-detail.component';
+
+// Register the locale data
+registerLocaleData(localeTh);
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     RegistorComponent,
     OnlyNumber,
@@ -37,8 +55,17 @@ import { NgbDateCustomParserFormatter } from './date-formate/date-custom-parser-
     ApproveRequestVehicleComponent,
     RejectRequestVehicleComponent,
     ApproveTemporaryPreRegisterComponent,
-    VehicleModalComponent
-  ],
+    VehicleModalComponent,
+    NoEStampComponent,
+    PhoneNumberDirective,
+    MotocycleWalkInRegisterComponent,
+    EStampComponent,
+    EStampOutComponent,
+    EStampOutDetailComponent,
+    ContactSecurityGuardComponent,
+    LoadingComponent,
+      ContactSecurityGuardDetailComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -46,11 +73,13 @@ import { NgbDateCustomParserFormatter } from './date-formate/date-custom-parser-
     ReactiveFormsModule,
     NgbModule,
     NgOtpInputModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [
-    { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
+    { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

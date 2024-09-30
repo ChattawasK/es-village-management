@@ -1,0 +1,19 @@
+<div class="modal-header">
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-12 text-center">
+      <i class="bi bi-exclamation-triangle-fill icon"></i>
+    </div>
+  </div>
+  <div class="col-12 text-center">
+    <h2>ยืนยันการตรวจสอบข้อมูล</h2>
+    <label>คุณไม่ได้รับการติดต่อจาก</label><br>
+    <label>{{plateNo}}</label><br>
+    <label>(ยืนยันเพื่อแจ้งเจ้าหน้าที่รักษาความปลอดภัย)</label>
+  </div>
+
+<div class="text-center py-3">
+  <button type="button" class="btn btn-register mx-2 px-5" (click)="activeModal.close('Close click')">ยืนยัน</button>
+  <button type="button" class="btn btn-cancel mx-2 px-5" (click)="activeModal.dismiss()">ยกเลิก</button>
+</div>

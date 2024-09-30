@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row px-4">
+    <div class="col-12 pt-5 pb-4 text-center">
+      <h1 class="title">Contact Security Guard</h1>
+    </div>
+    <div class="col-5">
+      <label>บ้านเลขที่</label>
+    </div>
+    <div class="col-7">
+      <label class="text-orange">{{transactionIncidentData?.houseName}}</label>
+    </div>
+    <div class="col-5">
+      <label>เบอร์โทรศัพท์</label>
+    </div>
+    <div class="col-7">
+      <a class="text-orange" [href]="'tel:'+transactionIncidentData?.telephoneNumber">{{transactionIncidentData?.telephoneNumber}}</a>
+    </div>
+    <div class="col-12 pt-4 pb-2">
+      <hr/>
+    </div>
+    <div class="col-12 mb-3">
+      <h5 class="text-orange">แจ้งข้อมูลการติดต่อ</h5>
+    </div>
+    <div class="col-12">
+      <div class="form-group mb-1">
+        <label class="form-label">รายละเอียดที่ต้องการติดต่อ</label>
+        <textarea class="form-control" rows="6" [value]="transactionIncidentData?.message" disabled></textarea>
+      </div>
+      <div class="col-12">
+        <label class="form-label mb-2">แนบรูปถ่าย</label>
+        <img *ngIf="url" class="img-thumbnail" src={{url}} >
+      </div>
+      <div class="text-center py-3">
+        <button type="button" class="btn btn-register mx-2 px-3" (click)="approve()">รับทราบ</button>
+        <button type="button" class="btn invalid-button mx-2 px-3" >ยกเลิก</button>
+
+      </div>
+    </div>
+  </div>
+</div>

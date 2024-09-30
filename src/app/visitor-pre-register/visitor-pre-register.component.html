@@ -25,29 +25,30 @@
     <div class="col-12 mb-3">
       <h5 class="text-orange">ข้อมูลผู้มาติดต่อ</h5>
     </div>
-
-    <form class="row row-cols-sm-auto">
+    <form class="row row-cols-sm-auto" [formGroup]="form" (submit)="onSubmit()">
       <div class="col-12">
-        <div class="form-group mb-3">
+        <div class="form-group mb-3"  >
           <label class="form-label required">วันที่มาติดต่อ</label>
           <div class="input-group">
             <input
               class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['registerationDateObj'].errors }"
               placeholder="yyyy-mm-dd"
               name="dp"
-              [(ngModel)]="model"
+              formControlName="registerationDateObj"
               ngbDatepicker
               #d="ngbDatepicker"
+              (click)="d.toggle()"
             />
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
           </div>
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">ทะเบียนรถ</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="plateNo"  [ngClass]="{ 'is-invalid': submitted && f['plateNo'].errors }">
         </div>
         <div class="form-group mb-3">
-          <select class="form-select" id="village">
+          <select class="form-select" id="village" formControlName="plateProvinceId"  [ngClass]="{ 'is-invalid': submitted && f['plateProvinceId'].errors }">
             <option value="">เลือกจังหวัด</option>
             <ng-container *ngFor="let item of provinces">
               <option [value]="item.id">{{item.nameTh}}</option>
@@ -56,19 +57,19 @@
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">ชื่อผู้มาติดต่อ</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="visitorFullName"  [ngClass]="{ 'is-invalid': submitted && f['visitorFullName'].errors }">
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">เบอร์โทรศัพท์</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="visitorPhoneNo" [ngClass]="{ 'is-invalid': submitted && f['visitorPhoneNo'].errors }">
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">เหตุผล</label>
-          <textarea class="form-control" rows="3"></textarea>
+          <textarea class="form-control" rows="3" formControlName="reason" [ngClass]="{ 'is-invalid': submitted && f['reason'].errors }"></textarea>
         </div>
         <div class="text-center py-3">
           <button type="button" class="btn invalid-button mx-2 px-3" >ยกเลิก</button>
-          <button type="button" class="btn btn-cancel mx-2 px-3" >บันทึก</button>
+          <button type="submit" class="btn btn-cancel mx-2 px-3" >บันทึก</button>
         </div>
       </div>
     </form>

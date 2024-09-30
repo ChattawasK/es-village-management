@@ -1,10 +1,14 @@
+import { VisitorPreRegisterService } from './../../services/visitor-pre-register.service';
 import { ResidentService } from './../../services/resident.service';
 import { ProvinceService } from './../../services/province.service';
-import { Component, OnInit } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Component, inject, OnInit } from '@angular/core';
+import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from '../../services/customer.service';
 import { LocalService } from '../../services/local.service';
 import { VehicleService } from '../../services/vehicle.service';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApproveSuccessComponent } from '../modals/approve-success/approve-success.component';
+import { PreRegistorSuccessModalComponent } from '../modals/pre-registor-success-modal/pre-registor-success-modal.component';
 
 @Component({
   selector: 'app-visitor-pre-register',
@@ -13,23 +17,58 @@ import { VehicleService } from '../../services/vehicle.service';
 })
 export class VisitorPreRegisterComponent implements OnInit {
 
-  model: NgbDateStruct | undefined;
-
+  dateValue!: NgbDateStruct | undefined;
   name = '';
   village: any;
   phoneNumber = '';
   provinces: any[] = [];
   house: any = null;
+
+  form = new FormGroup({
+    registerationDate: new FormControl(''),
+    registerationDateObj: new FormControl(this.dateValue!, [
+      Validators.required,
+    ]),
+    houseId: new FormControl(null, [
+      Validators.required,
+    ]),
+    houseNumber: new FormControl(null, [
+      Validators.required,
+    ]),
+    plateNo: new FormControl(null, [
+      Validators.required,
+    ]),
+    plateProvinceId: new FormControl('', [
+      Validators.required,
+    ]),
+    visitorFullName: new FormControl(null, [
+      Validators.required,
+    ]),
+    visitorPhoneNo: new FormControl(null, [
+      Validators.required,
+    ]),
+    reason: new FormControl(null, [
+      Validators.required,
+    ])
+  });
+
+  submitted = false;
+
+  private modalService = inject(NgbModal);
+
   constructor(private customerService:CustomerService,
-    private vehicleService: VehicleService,
+    private visitorPreRegisterService: VisitorPreRegisterService,
     private localService: LocalService,
     private provinceService: ProvinceService,
-    private residentService: ResidentService
+    private residentService: ResidentService,
+
   ) { }
 
   ngOnInit() {
+
     this.getProfile();
     this.loadProvinces();
+
   }
 
   getProfile(){
@@ -45,6 +84,8 @@ export class VisitorPreRegisterComponent implements OnInit {
   getResident(){
     this.residentService.getResident(this.village.villageShortName).subscribe(data => {
       this.house = data.houses[0];
+      this.form.controls.houseNumber.setValue(this.house.nameTh);
+      this.form.controls.houseId.setValue(this.house.id);
     });
   }
 
@@ -54,5 +95,22 @@ export class VisitorPreRegisterComponent implements OnInit {
     })
   }
 
+  onSubmit(){
+    this.submitted = true;
+    if(this.form.valid){
+      var dateObj = this.form.controls.registerationDateObj.value
+      this.form.controls.registerationDate.setValue(dateObj?.year +'-'+ dateObj?.month + '-'+dateObj?.day);
+      this.visitorPreRegisterService.create(this.form.value,this.localService.getData("villageShortName")).subscribe(data => {
+        const success = this.modalService.open(PreRegistorSuccessModalComponent);
+        this.form.reset();
+        this.submitted = false;
+      });
 
+    }
+
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form!.controls;
+  }
 }

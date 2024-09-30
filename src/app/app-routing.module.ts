@@ -10,6 +10,13 @@ import { WalkInRegisterComponent } from './walk-in-register/walk-in-register.com
 import { SummaryComponent } from './summary/summary.component';
 import { ApproveRequestVehicleComponent } from './approve-request-vehicle/approve-request-vehicle.component';
 import { ApproveTemporaryPreRegisterComponent } from './approve-temporary-pre-register/approve-temporary-pre-register.component';
+import { NoEStampComponent } from './no-e-stamp/no-e-stamp.component';
+import { MotocycleWalkInRegisterComponent } from './motocycle-walk-in-register/motocycle-walk-in-register.component';
+import { EStampComponent } from './e-stamp/e-stamp.component';
+import { EStampOutComponent } from './e-stamp-out/e-stamp-out.component';
+import { EStampOutDetailComponent } from './e-stamp-out-detail/e-stamp-out-detail.component';
+import { ContactSecurityGuardComponent } from './contact-security-guard/contact-security-guard.component';
+import { ContactSecurityGuardDetailComponent } from './contact-security-guard-detail/contact-security-guard-detail.component';
 
 const routes: Routes = [
   { path: '', component: RegistorComponent },
@@ -19,10 +26,18 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'visitor-pre-register', component: VisitorPreRegisterComponent },
   { path: 'temporary-pre-register', component: TemporaryPreRegisterComponent },
-  { path: 'walk-in-register', component: WalkInRegisterComponent },
-  { path: 'summary', component: SummaryComponent },
-  { path: 'approve-request-vehicle', component: ApproveRequestVehicleComponent},
-  { path: 'approve-temporary-pre-register', component: ApproveTemporaryPreRegisterComponent}
+  { path: 'walk-in-register', component: MotocycleWalkInRegisterComponent },
+  { path: 'walk-in-register/:id', component: WalkInRegisterComponent },
+  { path: 'e-stamp/:id', component: EStampComponent },
+  { path: 'no-e-stamp/:id', component: NoEStampComponent },
+  { path: 'e-stamp-out', component: EStampOutComponent },
+  { path: 'e-stamp-out/:id', component: EStampOutDetailComponent },
+  { path: 'summary/:id', component: SummaryComponent },
+  { path: 'contact-security-guard', component: ContactSecurityGuardComponent },
+  { path: 'contact-security-guard/:id', component: ContactSecurityGuardDetailComponent },
+  { path: 'approve-request-add-vehicle/:id', component: ApproveRequestVehicleComponent},
+  { path: 'approve-request-edit-vehicle/:id', component: ApproveRequestVehicleComponent},
+  { path: 'approve-temporary-pre-register/:id', component: ApproveTemporaryPreRegisterComponent}
 ];
 
 @NgModule({

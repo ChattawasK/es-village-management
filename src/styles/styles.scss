@@ -121,3 +121,13 @@ select:focus {
 input:disabled {
   background: $gray50 !important;
 }
+
+input:read-only {
+  background: $gray50 !important;
+}
+
+textarea:disabled {
+  background: $gray50 !important;
+}
+
+

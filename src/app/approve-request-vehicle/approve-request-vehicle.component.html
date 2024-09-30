@@ -1,23 +1,23 @@
 <div class="container">
   <div class="row px-4">
     <div class="col-12 pt-5 text-center">
-      <h1 class="title">รายการคำขอเพิ่มทะเบียนรถ</h1>
+      <h1 class="title">{{title}}</h1>
     </div>
     <div class="col-12 pt-4 pb-2">
-      <h1>คุณวีรพล เวชวิชา</h1>
-      <h5 class="text-orange">หมู่บ้านกลางเมืองวัชรพล</h5>
+      <h1>คุณ{{residentCar?.user.nameTh}} {{residentCar?.user.surnameTh}}</h1>
+      <h5 class="text-orange">{{residentCar?.user.villageName}}</h5>
     </div>
     <div class="col-5">
       <label>บ้านเลขที่</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">166/132</label>
+      <label class="text-orange">{{residentCar?.user.houses[0].nameEn}}</label>
     </div>
     <div class="col-5">
       <label>เบอร์โทรศัพท์</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">098-711-5326</label>
+      <label class="text-orange">{{residentCar?.user.telephoneNumber}}</label>
     </div>
     <div class="col-12 pt-4 pb-2">
       <hr/>
@@ -29,19 +29,19 @@
       <label>เลขทะเบียน</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">กน1234</label>
+      <label class="text-orange">{{residentCar?.plateNo}}</label>
     </div>
     <div class="col-5">
       <label>จังหวัด</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">ภูเก็ต</label>
+      <label class="text-orange">{{residentCar?.plateProvince}}</label>
     </div>
     <div class="d-grid pt-5">
-      <button type="submit" class="btn btn-register" (click)="approve()">อนุมัติ</button>
+      <button type="button" class="btn btn-register" (click)="approve()">อนุมัติ</button>
     </div>
     <div class="d-grid pt-1">
-      <button type="submit" class="btn btn-cancel" (click)="reject()">ปฏิเสธ</button>
+      <button type="button" class="btn btn-cancel" (click)="reject()">ปฏิเสธ</button>
     </div>
   </div>
 </div>

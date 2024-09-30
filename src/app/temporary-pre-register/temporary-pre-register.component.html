@@ -4,20 +4,20 @@
       <h1 class="title">Temporary Pre-Register</h1>
     </div>
     <div class="col-12 pt-4 pb-2">
-      <h1>คุณวีรพล เวชวิชา</h1>
-      <h5 class="text-orange">หมู่บ้านกลางเมืองวัชรพล</h5>
+      <h1>คุณ{{name}}</h1>
+      <h5 class="text-orange">{{village?.villageName}}</h5>
     </div>
     <div class="col-5">
       <label>บ้านเลขที่</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">166/132</label>
+      <label class="text-orange">{{house?.nameTh}}</label>
     </div>
     <div class="col-5">
       <label>เบอร์โทรศัพท์</label>
     </div>
     <div class="col-7">
-      <label class="text-orange">098-711-5326</label>
+      <label class="text-orange">{{phoneNumber}}</label>
     </div>
     <div class="col-12 pt-4 pb-2">
       <hr/>
@@ -26,57 +26,64 @@
       <h5 class="text-orange">ข้อมูลผู้มาติดต่อ</h5>
     </div>
 
-    <form class="row row-cols-sm-auto">
+    <form class="row row-cols-sm-auto" [formGroup]="form" (submit)="onSubmit()">
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label required">วันที่มาติดต่อ</label>
           <div class="input-group mb-1">
             <input
               class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['registrationStartDateObj'].errors }"
               placeholder="yyyy-mm-dd"
               name="dp"
-              [(ngModel)]="model"
+              formControlName="registrationStartDateObj"
               ngbDatepicker
               #d="ngbDatepicker"
+              (click)="d.toggle()"
             />
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
           </div>
           <div class="input-group">
             <input
               class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['registrationEndDateObj'].errors }"
               placeholder="yyyy-mm-dd"
-              name="dp2"
-              [(ngModel)]="model"
+              name="dp"
+              formControlName="registrationEndDateObj"
               ngbDatepicker
               #d2="ngbDatepicker"
+              (click)="d2.toggle()"
             />
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d2.toggle()" type="button"></button>
           </div>
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">ทะเบียนรถ</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="plateNo"  [ngClass]="{ 'is-invalid': submitted && f['plateNo'].errors }">
         </div>
         <div class="form-group mb-3">
-          <select class="form-select" id="village">
+          <select class="form-select" id="village" formControlName="plateProvinceId"  [ngClass]="{ 'is-invalid': submitted && f['plateProvinceId'].errors }">
             <option value="">เลือกจังหวัด</option>
+            <ng-container *ngFor="let item of provinces">
+              <option [value]="item.id">{{item.nameTh}}</option>
+            </ng-container>
           </select>
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">ชื่อผู้มาติดต่อ</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="visitorFullName"  [ngClass]="{ 'is-invalid': submitted && f['visitorFullName'].errors }">
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">เบอร์โทรศัพท์</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="visitorPhoneNo" [ngClass]="{ 'is-invalid': submitted && f['visitorPhoneNo'].errors }">
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">เหตุผล</label>
-          <textarea class="form-control" rows="3"></textarea>
+          <textarea class="form-control" rows="3" formControlName="reason" [ngClass]="{ 'is-invalid': submitted && f['reason'].errors }"></textarea>
         </div>
         <div class="text-center py-3">
           <button type="button" class="btn invalid-button mx-2 px-3" >ยกเลิก</button>
-          <button type="button" class="btn btn-cancel mx-2 px-3" >บันทึก</button>
+          <button type="submit" class="btn btn-cancel mx-2 px-3" >บันทึก</button>
         </div>
       </div>
     </form>

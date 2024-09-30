@@ -4,19 +4,22 @@
       <h1 class="title">Walk-in Register</h1>
     </div>
     <div class="col-12 pt-2 text-center">
-      <h1>กน789</h1>
+      <h1>{{walkInData?.plateNo}}</h1>
     </div>
     <div class="col-12 pt-4 pb-2">
       <hr/>
     </div>
-    <form class="row row-cols-sm-auto">
+    <form class="row row-cols-sm-auto" [formGroup]="form" (submit)="onSubmit()">
       <div class="col-12 mb-3">
         <h5 class="text-orange">ข้อมูลบ้านที่ต้องการติดต่อ</h5>
       </div>
       <div class="form-group">
         <label class="form-label required">บ้านเลขที่</label>
-        <select class="form-select" id="village">
-          <option value="">163/197</option>
+        <select class="form-select" formControlName="houseId" [ngClass]="{ 'is-invalid': submitted && f['visitorFullName'].errors }">
+          <option value=""></option>
+          <ng-container *ngFor="let item of houses">
+            <option [value]="item.id">{{item.nameTh}}</option>
+          </ng-container>
         </select>
       </div>
       <div class="col-12 pt-2 pb-2">
@@ -26,45 +29,38 @@
         <h5 class="text-orange">ข้อมูลผู้มาติดต่อ</h5>
       </div>
       <div class="col-12">
-        <label class="form-label mb-2">รูปถ่าย</label>
-        <img *ngIf="url"  class="img-thumbnail" src={{url}}>
-        <div class="mb-3">
-          <input class="form-control" type="file" id="formFile"  (change)="onFileChanged($event)" >
+        <label class="form-label mb-2 required">รูปถ่าย</label>
+        <img *ngIf="url" class="img-thumbnail" src={{url}} >
+        <div class="mb-3 text-center">
+          <input formControlName="imageUpload" class="form-control" type="file" id="formFile"  #fileInput (change)="onFileChanged($event)" accept="image/*" capture="environment" style="display: none;" >
+          <button type="button" class="btn btn-cancel mx-2 px-3" (click)="onClickUpload()" >
+            <i class="bi bi-camera icon" style="font-size: 20px;" ></i>
+          </button><br>
+          <small class="text-danger" *ngIf="submitted && f['imageUpload'].errors">กรุณาเลือกรูปถ่าย</small>
         </div>
       </div>
       <div class="col-12">
         <div class="form-group mb-3">
           <label class="form-label required">วันที่มาติดต่อ</label>
-          <div class="input-group mb-1">
-            <input
-              class="form-control"
-              placeholder="yyyy-mm-dd"
-              name="dp"
-              [(ngModel)]="model"
-              ngbDatepicker
-              #d="ngbDatepicker"
-            />
-            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
-          </div>
+          <input type="text" class="form-control" value="{{registrationDate | date: 'dd MMMM yyyy':'':'th-TH' }}" disabled>
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">ชื่อผู้มาติดต่อ</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="visitorFullName"  [ngClass]="{ 'is-invalid': submitted && f['visitorFullName'].errors }">
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">เบอร์โทรศัพท์</label>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control" formControlName="visitorPhoneNo" [ngClass]="{ 'is-invalid': submitted && f['visitorPhoneNo'].errors }">
         </div>
         <div class="form-group mb-1">
           <label class="form-label required">เหตุผล</label>
-          <textarea class="form-control" rows="3"></textarea>
+          <textarea class="form-control" rows="3" formControlName="reason" [ngClass]="{ 'is-invalid': submitted && f['reason'].errors }"></textarea>
         </div>
         <div class="text-center py-3">
           <button type="button" class="btn invalid-button mx-2 px-3" >ยกเลิก</button>
-          <button type="button" class="btn btn-cancel mx-2 px-3" >บันทึก</button>
+          <button type="submit" class="btn btn-cancel mx-2 px-3" >บันทึก</button>
         </div>
       </div>
     </form>
-
   </div>
 </div>

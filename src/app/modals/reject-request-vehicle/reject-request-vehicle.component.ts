@@ -8,10 +8,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class RejectRequestVehicleComponent implements OnInit {
   activeModal = inject(NgbActiveModal);
-
+  reason = '';
   constructor() { }
 
   ngOnInit() {
+  }
+
+  reject(){
+    this.activeModal.close(this.reason);
   }
 
 }

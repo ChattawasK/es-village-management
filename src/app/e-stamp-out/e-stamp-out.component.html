@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row px-4">
+    <div class="col-12 pt-5 text-center">
+      <h1 class="title">ลงทะเบียนขาออก</h1>
+    </div>
+    <div class="col-12 pt-4 pb-2">
+      <hr/>
+    </div>
+    <div class="col-12 mb-3">
+      <h5 class="text-orange">ข้อมูลบ้านที่ต้องการติดต่อ</h5>
+    </div>
+    <div class="form-group">
+      <label class="form-label required">บ้านเลขที่</label>
+      <select class="form-select" [(ngModel)]="houseId">
+        <option [value]="0">== กรุณาเลือก ==</option>
+        <ng-container *ngFor="let item of houses">
+          <option [value]="item.nameTh">{{item.nameTh}}</option>
+        </ng-container>
+      </select>
+    </div>
+    <div class="text-center pt-3">
+      <button type="button" (click)="search()" class="btn btn-register mx-2 px-3" >ค้นหา</button>
+    </div>
+    <div class="col-12 pt-2 pb-2">
+      <hr/>
+    </div>
+    <ng-container *ngFor="let item of walkInData">
+      <div class="row">
+        <div class="col item my-auto">
+          <label>{{item.registrationDate | date: 'dd MMMM yyyy | HH:mmน.':'':'th-TH'}}</label>
+        </div>
+        <div class="col-2">
+          <button type="button" [routerLink]="['/e-stamp-out',item.id]" class="btn btn-register" >เลือก</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
