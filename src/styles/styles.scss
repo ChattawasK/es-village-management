@@ -85,6 +85,10 @@ input[type="text"]:focus {
   outline: 0 none;
 }
 
+input[type="checkbox"] {
+  background: $orange40 !important; /* Change the checkbox color */
+}
+
 textarea {
   background-color: $orange40 !important;
   border-color: $orange70 !important;
@@ -129,5 +133,4 @@ input:read-only {
 textarea:disabled {
   background: $gray50 !important;
 }
-
 

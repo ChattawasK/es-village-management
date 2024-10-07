@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import Swal from 'sweetalert2'
-import liff from '@line/liff';
-import { AuthenticateService } from '../../services/authenticate.service';
-import { environment } from './../../environments/environment';
-import { LocalService } from '../../services/local.service';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import liff from '@line/liff';
+import { environment } from '../../environments/environment';
+import { AuthenticateService } from '../../services/authenticate.service';
+import { LocalService } from '../../services/local.service';
 
 @Component({
-  selector: 'app-registor',
-  templateUrl: './registor.component.html',
-  styleUrls: ['./registor.component.scss']
+  selector: 'app-staff-register',
+  templateUrl: './staff-register.component.html',
+  styleUrl: './staff-register.component.scss'
 })
-export class RegistorComponent implements OnInit {
+export class StaffRegisterComponent {
   form = new FormGroup({
     phoneNumber: new FormControl('', [
       Validators.required,
       Validators.minLength(10)
-    ]),
-    accept: new FormControl(false, [
-      Validators.required,
-      Validators.requiredTrue
     ])
   });
 

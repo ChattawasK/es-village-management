@@ -36,6 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingInterceptor } from './Interceptor/loading-interceptor.service';
 import { LoadingComponent } from './loading/loading.component';
 import { ContactSecurityGuardDetailComponent } from './contact-security-guard-detail/contact-security-guard-detail.component';
+import { LoginComponent } from './login/login.component';
+import { StaffRegisterComponent } from './staff-register/staff-register.component';
 
 // Register the locale data
 registerLocaleData(localeTh);
@@ -64,7 +66,9 @@ registerLocaleData(localeTh);
     EStampOutDetailComponent,
     ContactSecurityGuardComponent,
     LoadingComponent,
-      ContactSecurityGuardDetailComponent
+      ContactSecurityGuardDetailComponent,
+      LoginComponent,
+      StaffRegisterComponent
    ],
   imports: [
     BrowserModule,

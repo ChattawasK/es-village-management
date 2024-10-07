@@ -9,12 +9,6 @@
                   <div >
                       <input type="text" [OnlyNumber]="true" maxlength="10" formControlName="phoneNumber" class="form-control" id="phoneNumber" placeholder="กรอกเบอร์โทรศัพท์">
                   </div>
-                  <div class="form-check" class="mb-3">
-                    <input class="" type="checkbox" value="" id="flexCheckDefault" formControlName="accept">
-                    <label class="form-check-label" style="padding-left: 5px;" for="flexCheckDefault">
-                      ยอมรับ<label style="color: #F5821F;">นโยบายความเป็นส่วนตัว</label>
-                    </label>
-                  </div>
                   <div class="d-grid pt-3">
                       <button type="submit" class="btn btn-register" [disabled]="form.invalid" [ngClass]="{'invalid-button': form.invalid}">ลงทะเบียน</button>
                   </div>

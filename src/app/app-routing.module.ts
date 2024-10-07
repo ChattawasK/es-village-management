@@ -17,10 +17,12 @@ import { EStampOutComponent } from './e-stamp-out/e-stamp-out.component';
 import { EStampOutDetailComponent } from './e-stamp-out-detail/e-stamp-out-detail.component';
 import { ContactSecurityGuardComponent } from './contact-security-guard/contact-security-guard.component';
 import { ContactSecurityGuardDetailComponent } from './contact-security-guard-detail/contact-security-guard-detail.component';
+import { StaffRegisterComponent } from './staff-register/staff-register.component';
 
 const routes: Routes = [
   { path: '', component: RegistorComponent },
   { path: 'register', component: RegistorComponent },
+  { path: 'register-security-guard', component: StaffRegisterComponent },
   { path: 'otp', component: OtpComponent },
   { path: 'register-success', component: RegisterSuccessComponent },
   { path: 'profile', component: ProfileComponent },
